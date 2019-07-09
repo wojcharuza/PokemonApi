@@ -9,5 +9,8 @@
         <module name="PokemonApi" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PokemonApi" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

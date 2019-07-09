@@ -54,6 +54,14 @@
             <artifactId>jersey-media-json-binding</artifactId>
         </dependency>
         -->
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>tomee-plume-webapp</artifactId>
+            <version>7.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
     <properties>
         <jersey.version>2.28-RC4</jersey.version>
