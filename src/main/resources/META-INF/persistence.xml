@@ -7,6 +7,7 @@
     <persistence-unit name="jpaexamplePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.codecool.models.Move</class>
+        <class>com.codecool.models.Pokemon</class>
         <!--<class>com.codecool.jpaexample.model.Address</class>-->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
