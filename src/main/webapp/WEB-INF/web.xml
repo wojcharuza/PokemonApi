@@ -11,6 +11,14 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+    <servlet>
+        <servlet-name>DatabasePopulator</servlet-name>
+        <servlet-class>com.codecool.DatabasePopulator</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
         <url-pattern>/api/*</url-pattern>
