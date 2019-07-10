@@ -30,7 +30,7 @@ hs_err_pid*
 target/
 
 # Miscellaneous
-*.idea
+*.idea/
 *.settings
 *.classpath
 *.project
