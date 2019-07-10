@@ -1,12 +1,21 @@
 package com.codecool.models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Pokemon {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String type;
+
+
+    @ManyToMany(
+            cascade = CascadeType.ALL
+    )
     private List<Move> moves;
     private String nextEvolution;
     private int pokedexNumber;
