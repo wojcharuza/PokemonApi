@@ -23,11 +23,6 @@ public class Trainer {
     )
     private List<Pokemon> pokemons;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY
-    )
-    private List<Gym> gymsBeaten;
-
 
     public Trainer(){
 
@@ -38,7 +33,6 @@ public class Trainer {
         this.lastName = lastName;
         this.nickName = nickName;
         this.pokemons = pokemons;
-        this.gymsBeaten = gymsBeaten;
     }
 
 
@@ -82,11 +76,4 @@ public class Trainer {
         this.pokemons = pokemons;
     }
 
-    public List<Gym> getGymsBeaten() {
-        return gymsBeaten;
-    }
-
-    public void setGymsBeaten(List<Gym> gymsBeaten) {
-        this.gymsBeaten = gymsBeaten;
-    }
 }
