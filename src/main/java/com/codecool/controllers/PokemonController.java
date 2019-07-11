@@ -11,7 +11,7 @@ import java.util.List;
 public class PokemonController {
 
     @GET
-    @Path("pokemons")
+    @Path("pokemon")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Pokemon> getPokemons() {
         return null;

@@ -30,7 +30,6 @@ hs_err_pid*
 target/
 
 # Miscellaneous
-*.idea
 *.settings
 *.classpath
 *.project
@@ -38,8 +37,7 @@ target/
 *.iml
 *.DS_Store
 *.vscode/
-*.idea/
-.idea/workspace.xml
+.idea/
 
 
 
