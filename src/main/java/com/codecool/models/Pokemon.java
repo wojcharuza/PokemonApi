@@ -31,6 +31,7 @@ public class Pokemon {
     @ManyToMany(
             cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER
+
     )
     private List<Move> moves;
     private String nextEvolution;
