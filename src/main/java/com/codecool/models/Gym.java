@@ -1,23 +1,34 @@
 package com.codecool.models;
 
+
+import javax.persistence.*;
+
+
+@NamedQuery(name="Gym.findAllGyms",
+        query="SELECT g FROM Gym g")
+
+@Entity
 public class Gym {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String type;
     private String location;
-    private Trainer master;
+
+
 
 
     public Gym(){
 
     }
 
-    public Gym(String name, String type, String location, Trainer master){
+    public Gym(String name, String type, String location){
         this.name = name;
         this.type = type;
         this.location = location;
-        this.master = master;
     }
 
     public int getId() {
@@ -52,11 +63,11 @@ public class Gym {
         this.location = location;
     }
 
-    public Trainer getMaster() {
-        return master;
-    }
-
-    public void setMaster(Trainer master) {
-        this.master = master;
-    }
+//    public Trainer getMaster() {
+//        return master;
+//    }
+//
+//    public void setMaster(Trainer master) {
+//        this.master = master;
+//    }
 }
