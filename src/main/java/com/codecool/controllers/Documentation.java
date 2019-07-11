@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.controllers;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

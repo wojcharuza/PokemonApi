@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>DatabasePopulator</servlet-name>
-        <servlet-class>com.codecool.DatabasePopulator</servlet-class>
+        <servlet-class>com.codecool.DatabasePopulators.DatabasePopulator</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
