@@ -6,6 +6,11 @@ import javax.persistence.EntityManager;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+
+import com.codecool.models.Pokemon;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -34,16 +39,5 @@ public class PokemonController {
         Connector.getInstance().endTransaction();
         return pokemon;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
