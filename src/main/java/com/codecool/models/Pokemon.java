@@ -29,7 +29,7 @@ public class Pokemon {
 
 
     @ManyToMany(
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER
     )
     private List<Move> moves;
