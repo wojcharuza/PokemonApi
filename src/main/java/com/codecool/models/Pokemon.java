@@ -3,6 +3,10 @@ package com.codecool.models;
 import javax.persistence.*;
 import java.util.List;
 
+
+@NamedQuery(name="Pokemon.findAllPokemons",
+        query="SELECT p FROM Pokemon p")
+
 @Entity
 public class Pokemon {
 
