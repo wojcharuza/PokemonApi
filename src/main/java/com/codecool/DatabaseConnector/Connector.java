@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.DatabaseConnector;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

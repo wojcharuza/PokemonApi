@@ -1,10 +1,9 @@
-package com.codecool;
+package com.codecool.controllers;
 
-import com.codecool.models.Move;
+import com.codecool.DatabaseConnector.Connector;
+import com.codecool.models.Pokemon;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,10 +23,10 @@ public class MyResource {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Move getAll() {
+    public Pokemon getAll() {
         EntityManager em = Connector.getInstance().startTransaction();
-        Move move = em.find(Move.class, 1);
+        Pokemon pokemon = em.find(Pokemon.class, 1);
         Connector.getInstance().endTransaction();
-        return move;
+        return pokemon;
     }
 }
