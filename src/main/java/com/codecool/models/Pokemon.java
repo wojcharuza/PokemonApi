@@ -4,8 +4,19 @@ import javax.persistence.*;
 import java.util.List;
 
 
-@NamedQuery(name="Pokemon.findAllPokemons",
-        query="SELECT p FROM Pokemon p")
+@NamedQueries(
+        {
+                @NamedQuery(name="Pokemon.findAllPokemons",
+                        query="SELECT p FROM Pokemon p"),
+
+                @NamedQuery(name="Pokemon.findByName",
+                        query="SELECT p FROM Pokemon p WHERE p.name LIKE:pokName"),
+
+                @NamedQuery(name="Pokemon.findFiltered",
+                        query="SELECT p FROM Pokemon p WHERE p.name LIKE:pokName AND p.type LIKE:pokType"),
+        }
+)
+
 
 @Entity
 public class Pokemon {
