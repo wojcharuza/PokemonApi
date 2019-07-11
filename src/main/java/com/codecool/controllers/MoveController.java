@@ -59,10 +59,31 @@ public class MoveController {
 
     }
 
-//    @DELETE
-//    @Path("{id}")
-//    public Response deleteMove(@PathParam("id") int id) {
-//
-//    }
+    @DELETE
+    @Path("{id}")
+    public Response deleteMove(@PathParam("id") int id) {
+        EntityManager em = Connector.getInstance().startTransaction();
+        Move move = em.find(Move.class, id);
+        em.remove(move);
+        Connector.getInstance().endTransaction();
+        String response = "move deleted";
+        return Response.ok().entity(response).build();
+    }
+
+    @PUT
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateMove(@PathParam("id") Integer id, Move move){
+        EntityManager em = Connector.getInstance().startTransaction();
+        Move oldmove = em.find(Move.class, id);
+        oldmove.setName(move.getName());
+        oldmove.setType(move.getType());
+        oldmove.setAttackDamage(move.getAttackDamage());
+        Connector.getInstance().endTransaction();
+        String response = "pokemon updated";
+        return Response.ok().entity(response).build();
+    }
 
 }
+
