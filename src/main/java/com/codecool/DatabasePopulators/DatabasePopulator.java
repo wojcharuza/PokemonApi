@@ -52,8 +52,8 @@ public class DatabasePopulator extends HttpServlet {
         beatenGyms.add(waterGym);
 
         // new trainer
-        Trainer ash = new Trainer("asj","ketchup","keczup",new ArrayList<Pokemon>(), new ArrayList<Gym>());
-        Trainer brok = new Trainer("Brok","Brok","Brok",new ArrayList<Pokemon>(), new ArrayList<Gym>());
+        Trainer ash = new Trainer("asj","ketchup","keczup",pokemonList, beatenGyms);
+        Trainer brok = new Trainer("Brok","Brok","Brok",pokemonList, new ArrayList<Gym>());
 
 
         EntityManager em = Connector.getInstance().startTransaction();

@@ -28,6 +28,7 @@ public class TrainerController {
         List<Trainer> trainers = em.createNamedQuery("Trainer.findAllTrainers").getResultList();
         for (Trainer t: trainers) {
             Hibernate.initialize(t.getPokemons());
+            Hibernate.initialize(t.getGymsBeaten());
 
         }
         Connector.getInstance().endTransaction();
