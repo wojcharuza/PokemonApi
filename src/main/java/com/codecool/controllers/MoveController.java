@@ -10,10 +10,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+
 @Path("/moves")
 public class MoveController {
-
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Move> getAll() {
@@ -54,9 +53,6 @@ public class MoveController {
         Connector.getInstance().endTransaction();
         String response = "move added";
         return Response.ok().entity(response).build();
-
-
-
     }
 
     @DELETE
@@ -84,6 +80,5 @@ public class MoveController {
         String response = "pokemon updated";
         return Response.ok().entity(response).build();
     }
-
 }
 
