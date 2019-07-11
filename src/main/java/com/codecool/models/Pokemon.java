@@ -18,8 +18,7 @@ public class Pokemon {
 
 
     @ManyToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     private List<Move> moves;
     private String nextEvolution;
