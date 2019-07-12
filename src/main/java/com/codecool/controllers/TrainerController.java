@@ -13,6 +13,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Random;
 
 @Path("trainers")
 public class TrainerController {
@@ -90,4 +91,28 @@ public class TrainerController {
     }
 
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response catchPokemon(@QueryParam("pokemonID") int pokemonID, @QueryParam("trainerID") int trainerID) {
+        Random random = new Random();
+        String response = "";
+        int randomNumber = random.nextInt(10)+1;
+
+        if (randomNumber > 5){
+            EntityManager em = Connector.getInstance().startTransaction();
+            Pokemon catchedPokemon = em.find(Pokemon.class, pokemonID);
+            Trainer trainer = em.find(Trainer.class, trainerID);
+
+            List<Pokemon> pokemons = trainer.getPokemons();
+            pokemons.add(catchedPokemon);
+            trainer.setPokemons(pokemons);
+
+            Connector.getInstance().endTransaction();
+            response = "pokemon caught";
+        } else {
+            response = "pokemon escaped";
+
+        }
+        return Response.ok().entity(response).build();
+    }
 }
