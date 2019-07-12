@@ -3,6 +3,7 @@ package com.codecool.controllers;
 
 import com.codecool.DatabaseConnector.Connector;
 import com.codecool.DatabasePopulators.DatabasePopulator;
+import com.codecool.models.Move;
 import com.codecool.models.Pokemon;
 import com.codecool.models.Trainer;
 import org.hibernate.Hibernate;
@@ -92,8 +93,9 @@ public class TrainerController {
 
 
     @GET
+    @Path("/catch_pokemon")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response catchPokemon(@QueryParam("pokemonID") int pokemonID, @QueryParam("trainerID") int trainerID) {
+    public Response catchPokemon(@QueryParam("pokemonId") int pokemonID, @QueryParam("trainerId") int trainerID) {
         Random random = new Random();
         String response = "";
         int randomNumber = random.nextInt(10)+1;
@@ -115,4 +117,49 @@ public class TrainerController {
         }
         return Response.ok().entity(response).build();
     }
+
+    @GET
+    @Path("/fight")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response fight(@QueryParam("trainer1") int trainer1Id, @QueryParam("trainer2") int trainer2Id ) {
+        EntityManager em = Connector.getInstance().startTransaction();
+        String response = "";
+        Trainer trainer1 = em.find(Trainer.class, trainer1Id);
+        Trainer trainer2 = em.find(Trainer.class, trainer2Id);
+        Hibernate.initialize(trainer1.getPokemons());
+        Hibernate.initialize(trainer2.getPokemons());
+        Hibernate.initialize(trainer1.getGymsBeaten());
+        Hibernate.initialize(trainer2.getGymsBeaten());
+        for (Pokemon p: trainer1.getPokemons()) {
+            Hibernate.initialize(p.getMoves());
+        }
+        for (Pokemon p: trainer2.getPokemons()) {
+            Hibernate.initialize(p.getMoves());
+        }
+        Connector.getInstance().endTransaction();
+        List<Pokemon> pokemons1 = trainer1.getPokemons();
+        List<Pokemon> pokemons2 = trainer2.getPokemons();
+        int trainer1Damage = calculateDamage(pokemons1);
+        int trainer2Damage = calculateDamage(pokemons2);
+        if (trainer1Damage > trainer2Damage) {
+            response = trainer1.getFirstName() + " won";
+        } else if (trainer1Damage == trainer2Damage) {
+            response = "Draw";
+        } else {
+            response = trainer2.getFirstName() + " won";
+        }
+        return Response.ok().entity(response).build();
+    }
+
+    private int calculateDamage (List<Pokemon> pokemons) {
+        int damage = 0;
+        for (Pokemon p: pokemons) {
+            List<Move> moves = p.getMoves();
+            for (Move m: moves) {
+                damage += m.getAttackDamage();
+            }
+        }
+        return damage;
+    }
+
 }
