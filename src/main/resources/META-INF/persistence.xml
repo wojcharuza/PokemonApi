@@ -25,7 +25,7 @@
 
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/apidatabase"/>
-            <property name="javax.persistence.jdbc.user" value="wojciechcharuza"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
             <!--<property name="javax.persistence.sql-load-script-source" value="insert.sql"/>-->
         </properties>

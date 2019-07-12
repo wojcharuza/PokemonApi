@@ -34,6 +34,7 @@ public class TrainerController {
         return trainers;
     }
 
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,6 +46,7 @@ public class TrainerController {
         Connector.getInstance().endTransaction();
         return trainer;
     }
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -58,6 +60,7 @@ public class TrainerController {
         String response = "trainer added";
         return Response.ok().entity(response).build();
     }
+
 
     @PUT
     @Path("{id}")
@@ -73,6 +76,7 @@ public class TrainerController {
         String response = "trainer updated";
         return Response.ok().entity(response).build();
     }
+
 
     @DELETE
     @Path("{id}")

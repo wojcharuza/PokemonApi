@@ -28,13 +28,30 @@ public class DatabasePopulator extends HttpServlet {
 
         //magnemite
         Move spark = new Move("spark", "electric", 34);
-        Move thunderShock = new Move("thunderShock", "electric", 21);
+        Move thunderShock = new Move("thunder shock", "electric", 21);
+        Move vineWhip = new Move("vine whip", "grass", 20);
+
+        Move ember = new Move("ember", "fire", 80);
+        Move wingAttack = new Move("wing attack", "flying", 45);
+
+        Move bite = new Move("bite", "normal", 10);
+        Move fireFang = new Move("fire fang", "fire", 50);
+
 
         List<Move> pikachuMoves = Arrays.asList(electroshock, quickAttack);
         List<Move> squirtleMoves = Arrays.asList(tackle, bubble);
         List<Move>  magnemiteMoves = Arrays.asList(spark, thunderShock);
         List<Move> rattataMoves = Arrays.asList(quickAttack, tackle);
+        List<Move> bulbasaurMoves = Arrays.asList(tackle, vineWhip);
+        List<Move>  charizardMoves = Arrays.asList(ember, wingAttack);
+        List<Move> vulpixMoves = Arrays.asList(ember, quickAttack);
+        List<Move> arcananineMoves = Arrays.asList(bite, fireFang);
 
+
+        Pokemon arcanine = new Pokemon("arcanine", "fire", arcananineMoves, "none", 59, "78", "10");
+        Pokemon vulpix = new Pokemon("vulpix", "fire", vulpixMoves, "ninetales", 37, "121", "200");
+        Pokemon charizard = new Pokemon("charizard", "fire", charizardMoves, "none", 6, "400", "500");
+        Pokemon bulbasaur = new Pokemon("bulbasaur", "grass", bulbasaurMoves, "ivysaur", 1, "50", "50");
         Pokemon pikachu = new Pokemon("pikachu", "electric", pikachuMoves, "raichu", 25, "100", "300");
         Pokemon squirtle = new Pokemon("squirtle", "water", squirtleMoves, "wartortle", 7, "40", "10");
         Pokemon magnemite = new Pokemon("magnemite", "electric", magnemiteMoves, "magneton", 82, "100", "100");
@@ -57,17 +74,27 @@ public class DatabasePopulator extends HttpServlet {
 
 
         EntityManager em = Connector.getInstance().startTransaction();
+        em.persist(ember);
         em.persist(tackle);
         em.persist(bubble);
         em.persist(spark);
         em.persist(thunderShock);
         em.persist(electroshock);
         em.persist(quickAttack);
+        em.persist(vineWhip);
+        em.persist(wingAttack);
+        em.persist(bite);
+        em.persist(fireFang);
 
+
+        em.persist(vulpix);
         em.persist(pikachu);
         em.persist(squirtle);
         em.persist(magnemite);
         em.persist(rattata);
+        em.persist(bulbasaur);
+        em.persist(charizard);
+        em.persist(arcanine);
 
         em.persist(fireGym);
         em.persist(waterGym);

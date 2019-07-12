@@ -4,18 +4,11 @@ import com.codecool.DatabaseConnector.Connector;
 import com.codecool.models.Move;
 import com.codecool.models.Pokemon;
 import javax.persistence.EntityManager;
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
-
-import com.codecool.models.Pokemon;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -23,17 +16,6 @@ import java.util.List;
 
 @Path("pokemons")
 public class PokemonController {
-
-
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public List<Pokemon> getAll() {
-//        EntityManager em = Connector.getInstance().startTransaction();
-//        List<Pokemon> pokemons = em.createNamedQuery("Pokemon.findAllPokemons").getResultList();
-//        Connector.getInstance().endTransaction();
-//        return pokemons;
-//    }
-
 
     @GET
     @Path("{id}")
@@ -43,6 +25,18 @@ public class PokemonController {
         Pokemon pokemon = em.find(Pokemon.class, id);
         Connector.getInstance().endTransaction();
         return pokemon;
+    }
+
+
+    @GET
+    @Path("{id}/moves")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Move> getPokemonsMoves(@PathParam("id") Integer id) {
+        EntityManager em = Connector.getInstance().startTransaction();
+        Pokemon pokemon = em.find(Pokemon.class, id);
+        List<Move> moves = pokemon.getMoves();
+        Connector.getInstance().endTransaction();
+        return moves;
     }
 
 
@@ -96,12 +90,4 @@ public class PokemonController {
         String response = "Pokemon deleted";
         return Response.ok().entity(response).build();
     }
-
-
-
-
-
-
-
-
 }

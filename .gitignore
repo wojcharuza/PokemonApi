@@ -39,6 +39,8 @@ target/
 *.vscode/
 .idea/
 
+persistence.xml
+
 
 
 
