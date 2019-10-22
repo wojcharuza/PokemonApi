@@ -7,6 +7,7 @@ import com.codecool.models.Pokemon;
 import com.codecool.models.Trainer;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Transient;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import java.util.ArrayList;
@@ -62,6 +63,24 @@ public class DatabasePopulator extends HttpServlet {
         pokemonList.add(pikachu);
         pokemonList.add(rattata);
 
+
+
+        List<Pokemon> kamilList = new ArrayList<>();
+        List<Pokemon> wojtekList = new ArrayList<>();
+        List<Pokemon> pawelList = new ArrayList<>();
+
+        kamilList.add(arcanine);
+        kamilList.add(pikachu);
+
+        wojtekList.add(charizard);
+        wojtekList.add(bulbasaur);
+        wojtekList.add(squirtle);
+
+        pawelList.add(vulpix);
+        pawelList.add(magnemite);
+        pawelList.add(charizard);
+        pawelList.add(rattata);
+
         // gyms beaten by trainer
         List<Gym> beatenGyms = new ArrayList<>();
         Gym fireGym = new Gym("gym2","fire","starachowice");
@@ -71,6 +90,9 @@ public class DatabasePopulator extends HttpServlet {
         // new trainer
         Trainer ash = new Trainer("asj","ketchup","keczup",pokemonList, beatenGyms);
         Trainer brok = new Trainer("Brok","Brok","Brok",pokemonList, new ArrayList<Gym>());
+        Trainer kamil = new Trainer("Kamil", "Bracki", "detritus1", kamilList, beatenGyms);
+        Trainer wojtek = new Trainer("Wojtek", "Charuza", "WojtoszNOB", wojtekList, beatenGyms);
+        Trainer pawel = new Trainer("Pawel", "Płodzień", "Zibon", pawelList, beatenGyms);
 
 
         EntityManager em = Connector.getInstance().startTransaction();
@@ -99,6 +121,10 @@ public class DatabasePopulator extends HttpServlet {
         em.persist(fireGym);
         em.persist(waterGym);
 
+
+        em.persist(kamil);
+        em.persist(wojtek);
+        em.persist(pawel);
         em.persist(brok);
         em.persist(ash);
 
